@@ -26,16 +26,10 @@ startingInvestment = float(input("Enter the starting investment amount: "))
 years = float(input("Enter the number of years: "))
 interestRate = int(input("Enter the interest rate: "))
 
-# Convert the interest rate to a decimal number
-
-
-# Initialize the accumulator for the interest
-
-
-# Display the header for the table
-
-
-# Compute and display the results for each year
-
-
-# Display the totals for the period
+interestRate = interestRate / 100
+yearLoop = 0
+investmentTotal = startingInvestment
+while yearLoop < years:
+    yearLoop = yearLoop + 1
+    investmentTotal = (investmentTotal + interestRate) + investmentTotal
+    print("In year" , yearLoop, "you will have $" , investmentTotal)
