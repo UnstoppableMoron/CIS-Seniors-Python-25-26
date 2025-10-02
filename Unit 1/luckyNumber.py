@@ -8,9 +8,9 @@ Date: 10/2/2025
 import random
 
 # Game statistics
-total_rounds = 0
-total_wins = 0
-total_guesses = 0
+totalRounds = 0
+totalWins = 0
+totalGuesses = 0
 
 print("=" * 50)
 print("  WELCOME TO THE LUCKY NUMBER GUESSING GAME!")
@@ -18,54 +18,69 @@ print("=" * 50)
 print()
 
 # Main game loop - play multiple rounds
-# TODO: Use while True loop with break statement here
 while True:
     # Generate random lucky number
-    # TODO: Use random.randint() to generate number between 1 and 50
     luckyNumber = random.randint(1, 50)
+
     # Set maximum attempts
-    # TODO: Set max_attempts to 7
-    max_attempts = 7
+    maxAttempts = 7
+
     # Initialize attempt counter
-    # TODO: Create attempts variable starting at 0
     attempts = 0
-    
-    print(f"\nRound {total_rounds + 1}")
+
+    totalRounds += 1
+    print(f"\nRound {totalRounds}")
     print("I'm thinking of a lucky number between 1 and 50...")
-    print(f"You have {max_attempts} attempts to guess it!")
+    print(f"You have {maxAttempts} attempts to guess it!")
     print()
-   
-    # Guessing loop - count-controlled while loop
-    # TODO: Use while loop that continues while attempts < max_attempts
-   
-        # Get user's guess
-        # TODO: Get input and convert to integer
-       
-        # Increment attempt counter
-        # TODO: Add 1 to attempts
-       
-        # Check if guess is correct
-        # TODO: Compare guess to lucky_number
-       
-            # Player wins!
-            # TODO: Display success message
-            # TODO: Update statistics
-            # TODO: Break out of guessing loop
-           
-        # Provide hints
-        # TODO: Tell user if guess is too high or too low
-       
-    # If loop completes without break, player lost
-    # TODO: Handle case where player runs out of attempts
-   
-    # Display round statistics
-    # TODO: Show attempts used, win/loss for this round
-   
-    # Ask if player wants to play again
-    # TODO: Get input and check if user wants to continue
-    # TODO: Use break statement to exit main game loop if done
+
+    # Guessing loop
+    while attempts < maxAttempts:
+        try:
+            guess = int(input(f"Attempt {attempts + 1}: Enter your guess: "))
+        except ValueError:
+            print("Please enter a valid number between 1 and 50.")
+            continue
+
+        if guess < 1 or guess > 50:
+            print("Your guess is out of bounds. Please choose between 1 and 50.")
+            continue
+
+        attempts += 1
+        totalGuesses += 1
+
+        if guess == luckyNumber:
+            print(f"Correct! The lucky number was {luckyNumber}. You guessed it in {attempts} attempts.")
+            totalWins += 1
+            break
+        elif guess < luckyNumber:
+            print("Too low.")
+        else:
+            print("Too high.")
+
+    # If loop ends without a correct guess
+    if guess != luckyNumber:
+        print(f"Out of attempts. The lucky number was {luckyNumber}.")
+
+    # Round summary
+    print(f"Round {totalRounds} complete. Attempts used: {attempts}")
+    if guess == luckyNumber:
+        print("Correct! The lucky number was", luckyNumber)
+    else:
+        print("You lost this round.")
+
+    # Ask to play again
+    playAgain = input("\nDo you want to play another round? (yes/no): ").strip().lower()
+    if playAgain not in ("yes", "y"):
+        break
 
 # Display final statistics
-# TODO: Show total rounds, wins, and average guesses per round
-
-print("\nThanks for playing! Goodbye!")
+averageGuesses = totalGuesses / totalRounds if totalRounds > 0 else 0
+print("\n" + "=" * 50)
+print("GAME OVER - FINAL STATISTICS")
+print("=" * 50)
+print(f"Total Rounds Played: {totalRounds}")
+print(f"Total Wins: {totalWins}")
+print(f"Average Guesses per Round: {averageGuesses:.2f}")
+print("=" * 50)
+print("Thanks for playing!")
