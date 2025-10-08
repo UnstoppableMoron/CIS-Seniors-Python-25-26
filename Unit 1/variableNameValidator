@@ -22,5 +22,7 @@ variable_name = input("Enter a variable name to validate: ")
 # Your validation code goes here
 if variable_name == "" or " ":
     print("Invalid Variable Name: variable name cannot be empty")
-elif variable_name == 
+elif variable_name in python_keywords:
+    print("Invalid Variable Name: variable name cannot be a Python keyword")
+elif variable_name
 # Check each rule and provide appropriate feedback
