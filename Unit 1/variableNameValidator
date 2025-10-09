@@ -1,6 +1,9 @@
-# Python Variable Name Validator
-# Student Name: Owen Baker
-# Date: 10/7/2025
+'''
+Program: variableNameValidator
+Author: Owen Baker
+Class: CIS Seniors
+Date: 10/7/2025
+'''
 
 # List of Python keywords
 python_keywords = [
@@ -19,10 +22,19 @@ print()
 # Get user input
 variable_name = input("Enter a variable name to validate: ")
 
-# Your validation code goes here
-if variable_name == "" or " ":
+# Validation code
+invalid_start_chara = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+invalid_chara = [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '`', '{', '|', '}', '~' ]
+
+if variable_name == "" or variable_name == " ":
     print("Invalid Variable Name: variable name cannot be empty")
 elif variable_name in python_keywords:
     print("Invalid Variable Name: variable name cannot be a Python keyword")
-elif variable_name
+elif variable_name.startswith(tuple(invalid_start_chara)):
+    first_char = variable_name[0]
+    print("Invalid Variable Name: variable name cannot start with a number.")
+elif any(item in variable_name for item in invalid_chara):
+    print("Invalid Variable Name: special characters minus underscores cannot be used in a variable name.")
+else:
+    print("Valid!")
 # Check each rule and provide appropriate feedback
