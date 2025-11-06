@@ -63,8 +63,7 @@ def count_honor_students(students):
 print_class_report(grade_book)
 
 top_student = find_top_student(grade_book)
-print(f"Top Student: {top_student['name']} (ID: {top_student['student_id']}) "
-      f"with an average of {get_average(top_student):.2f}")
+print(f"Top Student: {top_student['name']} (ID: {top_student['student_id']}) with an average of {get_average(top_student):.2f}")
 
 honor_count = count_honor_students(grade_book)
 print(f"Number of honor students (avg >= 90): {honor_count}")
