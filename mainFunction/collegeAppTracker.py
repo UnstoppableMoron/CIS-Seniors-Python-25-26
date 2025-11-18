@@ -11,7 +11,7 @@ def get_college_count():
     count = input("How many colleges have you applied to? ")
     return int(count)
 
-def get_application_costs(num_colleges):
+def get_application_cost(num_colleges):
     """
     Calculate total application costs
 
@@ -40,13 +40,14 @@ def analyze_sat(score):
     else - Consider retaking to improve college options.
     """
     if score >= 1400:
-        print("Excellent!")
+        feedback = "Excellent!"
     elif score >= 1200:
-        print("Good score!")
+        feedback = "Good score!"
     elif score >= 1000:
-        print("Solid foundation.")
+        feedback = "Solid foundation."
     else:
-        print("Consider retaking to improve college options.")
+        feedback = "Consider retaking to improve college options."
+    return feedback
 
 def display_summary(colleges, cost, sat_score, sat_feedback):
     """
@@ -60,7 +61,7 @@ def main():
 
     # collect information
     num_colleges = get_college_count
-    total_cost = get_application_costs(num_colleges)
+    total_cost = get_application_cost(num_colleges)
     sat = get_sat_score()
 
     # Analyze data
@@ -72,5 +73,5 @@ def main():
     print("\nGood luck with your applications!")
 
 # entry point
-if __name__ == __main__:
+if __name__ == "__main__":
     main()
