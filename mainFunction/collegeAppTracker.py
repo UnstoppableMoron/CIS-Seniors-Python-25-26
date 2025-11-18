@@ -1,66 +1,69 @@
 def display_welcome():
-    """Display program header"""
-    print("Welcome to the College Application Tracker!")
+    pass
 
 def get_college_count():
-    """
-    Get number of colleges user is applying to
-    Return
+    '''
+    Number of colleges the user is applying to 
+    
+    return
         count (int)
-    """
-    count = input("How many colleges have you applied to? ")
-    return int(count)
+    '''
+
+    count = int(input("How many colleges have you applied for: "))
+    return count
 
 def get_application_cost(num_colleges):
-    """
-    Calculate total application costs
+    '''
+    Calculate total apliction cost
 
-    Return
+    return
         total_cost (float)
-    """
-    total_cost = 50 * num_colleges
-    return float(total_cost)
+    '''
+    total_cost = float(num_colleges * 50)
+    return total_cost
 
 def get_sat_score():
-    """
-    Get user's SAT score
+    '''
+    Get users SAT score
 
-    Return
+    return
         score (int)
-    """
-    score = input("What was your SAT score? ")
-    return int(score)
+    '''
+
+    score = int(input("What is your SAT score? "))
+    return score
 
 def analyze_sat(score):
-    """
-    Provide feedback on SAT score
-    >= 1400 - Excellent
-    >= 1200 - Good score
-    >= 1000 - Solid foundation
-    else - Consider retaking to improve college options.
-    """
+    '''
+    provide feedback on SAT
+    >= 1400 - excellent
+    >= 1200 - good score
+    >= 1000 - soild foundation
+    else - consider retaking to inprove college options
+    '''
+
     if score >= 1400:
-        feedback = "Excellent!"
+        feedback = "Excellent"
     elif score >= 1200:
-        feedback = "Good score!"
+        feedback = "Good score"
     elif score >= 1000:
-        feedback = "Solid foundation."
+        feedback = "Soild foundation"
     else:
-        feedback = "Consider retaking to improve college options."
+        feedback = "Consider retaking to improve college options"
     return feedback
 
 def display_summary(colleges, cost, sat_score, sat_feedback):
-    """
-    Display complete application summary with header
-    """
+    print("Number of colleges:", colleges)
+    print("Total cost:", cost)
+    print("SAT score:", sat_score)
+    print("SAT feedback:", sat_feedback)
 
 def main():
-    """Main function - orchestrates the entire program"""
     # Welcome the user
     display_welcome()
 
-    # collect information
-    num_colleges = get_college_count
+    #Collect information 
+    num_colleges = get_college_count()
     total_cost = get_application_cost(num_colleges)
     sat = get_sat_score()
 
@@ -70,8 +73,6 @@ def main():
     # Display results
     display_summary(num_colleges, total_cost, sat, feedback)
 
-    print("\nGood luck with your applications!")
-
-# entry point
+# Entry point
 if __name__ == "__main__":
     main()
