@@ -45,6 +45,24 @@ def make_time(hour, minute, second):
     time.seconds = second
     return time
 
+def increment_time(time, hours, minutes, seconds):
+    time.hours += hours
+    time.minutes += minutes
+    time.seconds += seconds
+
+    if time.seconds >= 60:
+        time.seconds -= 60
+        time.minutes += 1
+
+    if time.minutes >= 60:
+        time.minutes -= 60
+        time.hours += 1
+
+def add_time(time, hours, minutes, seconds):
+    total = copy(time)
+    increment_time(total, hours, minutes, seconds)
+    return total
+
 start = make_time(9, 21, 0)
 print_time(start)
 print("\n")
@@ -69,6 +87,14 @@ def increment_time(time, hours, minutes, seconds):
     time.hours += hours
     time.minutes += minutes
     time.seconds += seconds
+    
+    if time.seconds >= 60:
+        time.seconds -= 60
+        time.minutes += 1
+
+    if time.minutes >= 60:
+        time.minutes -= 60
+        time.hours += 1
 
 def add_time(time, hours, minutes, seconds):
     total = copy(time) # Copy first
@@ -78,3 +104,9 @@ def add_time(time, hours, minutes, seconds):
 end = add_time(start, 1, 32, 0)
 print_time(end) # 10:52:00
 print_time(start) # 09:20:00
+
+print("\nPrototype and Patch")
+
+start = make_time(9, 40, 0)
+end = add_time(start, 1, 32, 0)
+print_time(end)

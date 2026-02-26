@@ -1,23 +1,22 @@
-class Person:
-   def __init__(self):
-      self.first_name = ""
-      self.last_name = ""
 
-   def get_full_name(self):
-      return self.last_name + " " + self.first_name
+# "New" means new compared to previous level
+class Shape:
+    default_color = "red"
+    # New: Change from background_color
+    count = 0
 
-a_first_name = "Ann"
-another_first_name = "Ron"
-a_last_name = "Stark"
-another_last_name = "Rogers"
+    def __init__(self):
+        Shape.count += 1
+        self.number = self.count
+        self.color = self.default_color
 
-person1 = Person()
-person2 = Person()
+    def print_description(self):
+        print(f"{self.number} of {self.count} - {self.color}")
 
-person1.first_name = a_first_name
-person1.last_name = a_last_name
-person2.first_name = another_first_name
-person2.last_name = another_last_name
+shape1 = Shape()
+shape2 = Shape()
+shape2.color = "gold"
 
-print(f"You are {person1.get_full_name()}")
-print(f"I am {person2.get_full_name()}")
+print(Shape.count)
+shape1.print_description()
+shape2.print_description()
